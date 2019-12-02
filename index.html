@@ -65,8 +65,7 @@
         // label set-up
         label = d3.select("#label")
           .html("<strong>updated:</strong> " + fireData.features[0].properties.updated);
-        tip = d3.select("#tip")
-          .html(fireData.features[0].properties.title + "<br>" + d3.format(",.0f")(fireData.features[0].properties.size) + " hectares");
+        tip = d3.select("#tip");
         // map calculations
         projection = calcProjection();
         path = d3.geoPath();
@@ -118,6 +117,7 @@
         tip.style("display", "none")
           .style("left", "0px")
           .style("top", "0px")
+          .html(d.properties.title + "<br>" + d3.format(",.0f")(d.properties.size) + " hectares")
           .style("display", "block");
         tipBbox = document.querySelector("#tip").getBoundingClientRect();
         moveTip();
