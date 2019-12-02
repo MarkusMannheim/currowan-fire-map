@@ -19,7 +19,6 @@
     <!-- Initial page layout -->
     <div id="base">
       <div id="map"></div>
-      <div id="label"></div>
       <div id="tip"></div>
     </div>
     <script>
@@ -62,9 +61,6 @@
         svgGroup = svg
           .append("g")
             .attr("id", "svgGroup");
-        // label set-up
-        label = d3.select("#label")
-          .html("<strong>updated:</strong> " + fireData.features[0].properties.updated);
         tip = d3.select("#tip");
         // map calculations
         projection = calcProjection();
@@ -86,7 +82,7 @@
           padding: { top: bboxHeight * .2, bottom: bboxHeight * .2, left: bboxWidth * .2, right: bboxWidth * .2 }
         });
         // initial fade-in
-        d3.select("body, #label").transition()
+        d3.select("body").transition()
           .duration(1000)
           .style("opacity", 1);
         // re-render SVGs upon movement
@@ -117,7 +113,7 @@
         tip.style("display", "none")
           .style("left", "0px")
           .style("top", "0px")
-          .html(d.properties.name + "<br>" + d3.format(",.0f")(d.properties.size) + " hectares")
+          .html(d.properties.name + "<br>" + d3.format(",.0f")(d.properties.size) + " hectares<br><span id='update'>updated: " + d.properties.updated + "</span>")
           .style("display", "block");
         tipBbox = document.querySelector("#tip").getBoundingClientRect();
         moveTip();
