@@ -24,7 +24,7 @@
     </div>
     <script>
       // load electorates
-      d3.json("fire.geojson?randomKey=" + Math.floor(Math.random() * 900) + 100, function(error, data) {
+      d3.json("fires.geojson?randomKey=" + Math.floor(Math.random() * 900) + 100, function(error, data) {
         if (error) throw error;
         fireData = data;
         // set up MapBox engine
@@ -66,7 +66,7 @@
         label = d3.select("#label")
           .html("<strong>updated:</strong> " + fireData.features[0].properties.updated);
         tip = d3.select("#tip")
-          .text(d3.format(",.0f")(fireData.features[0].properties.size) + " hectares");
+          .html(fireData.features[0].properties.title + "<br>" + d3.format(",.0f")(fireData.features[0].properties.size) + " hectares");
         // map calculations
         projection = calcProjection();
         path = d3.geoPath();
