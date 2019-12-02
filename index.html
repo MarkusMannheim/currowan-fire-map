@@ -117,7 +117,7 @@
         tip.style("display", "none")
           .style("left", "0px")
           .style("top", "0px")
-          .html(d.properties.title + "<br>" + d3.format(",.0f")(d.properties.size) + " hectares")
+          .html(d.properties.name + "<br>" + d3.format(",.0f")(d.properties.size) + " hectares")
           .style("display", "block");
         tipBbox = document.querySelector("#tip").getBoundingClientRect();
         moveTip();
