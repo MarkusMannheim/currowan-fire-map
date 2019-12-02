@@ -83,7 +83,7 @@
         let bboxWidth = document.body.getBoundingClientRect().width;
         let bboxHeight = document.body.getBoundingClientRect().height;
         map.fitBounds(d3.geoBounds(fireData), {
-          padding: { top: bboxHeight * .35, bottom: bboxHeight * .35, left: bboxWidth * .35, right: bboxWidth * .35 }
+          padding: { top: bboxHeight * .2, bottom: bboxHeight * .2, left: bboxWidth * .2, right: bboxWidth * .2 }
         });
         // initial fade-in
         d3.select("body, #label").transition()
